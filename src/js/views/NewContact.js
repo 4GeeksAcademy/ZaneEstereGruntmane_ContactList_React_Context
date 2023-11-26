@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-import "../../styles/demo.css";
+import "../../styles/NewContact.css";
 
-export const Demo = () => {
+export const NewContact = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
