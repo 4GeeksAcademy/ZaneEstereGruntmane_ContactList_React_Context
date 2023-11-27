@@ -1,39 +1,36 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			contact: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				
-			]
+			contact: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getAgenda: async () => {
+				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/zaneestere ");
+				const jsonResponse = await response.json();
+
+				setStore({ contacts: jsonResponse });
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
+
+			addContact: (contactData) => {
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.contact.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ contact: demo });
-			}
+				await fetch("https://playground.4geeks.com/apis/fake/contact" {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						const newContact = {
+							"full_name": Zane Gruntmane 
+							"email": zeze@zeze.com 
+							"agenda_slug": zeee
+							"address": Porto  Rua do Almada
+							"phone": 913531276
+				}
+					})
+		})
+		setStore({ contacts: [...store.contacts, newContact]
+	})
+}
 		}
 	};
 };

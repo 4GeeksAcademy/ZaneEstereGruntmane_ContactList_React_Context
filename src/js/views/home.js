@@ -5,13 +5,13 @@ import "../../styles/home.css";
 export const Home = () => (
 	<div className="container-fluid text-center">
 		<div className="card-wrapper">
-			<div className="card-body border border-primary-subtle ms-5 me-5 row g-2 g-lg-3">
+			<div className="card-body border border-primary-subtle row ms-5 me-5  g-2 g-lg-2">
 				<img
 					src={rigoImage}
 					className="photo rounded-circle col-2 col-lg-2"
 					alt="..."
 				/>
-				<div className="cardtInfo col-6 col-lg-6">
+				<div className="card-info col-8 col-lg-6">
 					<ol className="list-group">
 						<li className="list-group-item d-flex justify-content-between align-items-start border border-0">
 							<div className="fw-bold fs-4"> Name
@@ -23,19 +23,24 @@ export const Home = () => (
 								</div>
 								<div className="email">
 									<i className="fa-sharp fa-regular fa-envelope" style={{ color: "#c5d7f6" }}  ></i>
+
+
 								</div>
+
 							</div>
 						</li>
 					</ol>
-				</div>
-
-				<div className="contactChange-wrapper col-3 col-lg-3 align-self-center">
-					<i className="contactToEdit fa-regular fa-pen-to-square fa-xl" style={{ color: "#414a6c" }}></i>
-					<i className="contactToDelete fa-solid fa-trash-arrow-up fa-xl" style={{ color: "#414a6c" }}></i>
 
 				</div>
 
-			</div >
-		</div >
-	</div >
+				{/* edit and delete icons which is not behaving yet
+				<div className="contact-change col-2 col-lg-4">
+                    <i className="contact-to-edit fa-regular fa-pen-to-square"></i>
+                    <i className="contact-to-delete fa-regular fa-trash-can"></i>
+                </div> */}
+
+			</div>
+
+		</div>
+	</div>
 );
