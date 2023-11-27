@@ -29,9 +29,8 @@ export const Home = () => (
 					</ol>
 				</div>
 
-				<div className="contactChange-wrapper col-4 col-lg-4 align-self-center">
+				<div className="contactChange-wrapper col-3 col-lg-3 align-self-center">
 					<i className="contactToEdit fa-regular fa-pen-to-square fa-xl" style={{ color: "#414a6c" }}></i>
-
 					<i className="contactToDelete fa-solid fa-trash-arrow-up fa-xl" style={{ color: "#414a6c" }}></i>
 
 				</div>
