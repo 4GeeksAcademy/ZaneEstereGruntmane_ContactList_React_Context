@@ -1,38 +1,45 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			contact: []
+			contacts: [
+
+			]
 		},
+
 		actions: {
 			getAgenda: async () => {
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/zaneestere ");
+				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/zaneestere");
 				const jsonResponse = await response.json();
-
+				console.log (jsonResponse)
 				setStore({ contacts: jsonResponse });
 			},
 
-			addContact: (contactData) => {
+			addContact: async (contactData) => {
 				const store = getStore();
-				await fetch("https://playground.4geeks.com/apis/fake/contact" {
+				await fetch("https://playground.4geeks.com/apis/fake/contact", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						const newContact = {
-							"full_name": Zane Gruntmane 
-							"email": zeze@zeze.com 
-							"agenda_slug": zeee
-							"address": Porto  Rua do Almada
-							"phone": 913531276
-				}
+
+							"full_name": contactData.fullName,
+							"email": contactData.email,
+							"agenda_slug": "zaneestere",
+							"address": contactData.address,
+							"phone": contactData.phone,
+
 					})
-		})
-		setStore({ contacts: [...store.contacts, newContact]
-	})
-}
+
+
+
+
+				})
+
+			}
+
 		}
-	};
-};
+	}
+}
 
 export default getState;
