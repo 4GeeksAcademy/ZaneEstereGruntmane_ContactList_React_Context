@@ -10,7 +10,7 @@ export const Home = () => {
 	}, [])
 
 	handleDeleteContact = (id) => actions.deleteContact(id)
-	handleEditContact = (id) => actions.editContact (id)
+	handleEditContact = (id) => actions.editContact(id)
 
 	return (
 		store.contacts.map((el, index) =>
@@ -46,12 +46,13 @@ export const Home = () => {
 						</div>
 
 						<div className="contact-change col-2 col-lg-4">
-							<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }}  onClick={() => handleEdit(el.id)} ></i>
-							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={() => handleDelete(el.id)} ></i>
+							<Link to={`/contact/edit/$(el.id)`}>
+								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick={() => handleEditContact(el.id)} ></i>
+							</Link>
+							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={() => handleDeleteContact(el.id)} ></i>
 						</div>
 
 					</div>
-
 				</div>
 			</div>
 		));

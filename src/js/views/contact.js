@@ -23,9 +23,12 @@ export const Contact = () => {
 		console.log("Submitted data:", contactData)
 	};
 
+	const params = UseParams (); 
+	const newContact = store.contacts.find( contact => contact.id === params.contactID )
+
 	return (
 		<div className="container">
-			{store.contacts.map((contact, index) => (
+			{store.contacts.map((newcontact, index) => (
 				<div className="container" key={index}>
 					<h1>Add a new contact</h1>
 					<form className="list-group-item shadow-sm p-3 mb-5 bg-body-tertiary rounded">
@@ -38,7 +41,7 @@ export const Contact = () => {
 								className="form-control"
 								id="exampleInputFullName"
 								placeholder="Enter Full Name"
-								value={contact.fullName}
+								value={newcontact.fullName}
 								onChange={handleInputChange}
 								name="fullName"
 							/>
@@ -53,7 +56,7 @@ export const Contact = () => {
 								className="form-control"
 								id="exampleInputEmail"
 								placeholder="Enter email"
-								value={contact.email}
+								value={newcontact.email}
 								onChange={handleInputChange}
 								name="email"
 							/>
@@ -68,7 +71,7 @@ export const Contact = () => {
 								className="form-control"
 								id="exampleInputPhone"
 								placeholder="Enter phone"
-								value={contact.phone}
+								value={newcontact.phone}
 								onChange={handleInputChange}
 								name="phone"
 							/>
@@ -83,7 +86,7 @@ export const Contact = () => {
 								className="form-control"
 								id="exampleInputAddress"
 								placeholder="Enter address"
-								value={contact.address}
+								value={newcontact.address}
 								onChange={handleInputChange}
 								name="address"
 							/>
