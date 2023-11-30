@@ -9,6 +9,8 @@ export const Home = () => {
 		actions.getAgenda()
 	}, [])
 
+	handleDeleteContact = (id) => actions.deleteContact(id)
+
 	return (
 		store.contacts.map((el, index) =>
 			<div className="container-fluid text-center">
@@ -44,7 +46,7 @@ export const Home = () => {
 
 						<div className="contact-change col-2 col-lg-4">
 							<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} ></i>
-							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} ></i>
+							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={() => handleDelete(el.id)} ></i>
 						</div>
 
 					</div>
