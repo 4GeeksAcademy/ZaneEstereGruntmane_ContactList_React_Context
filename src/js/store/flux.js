@@ -15,16 +15,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ contacts: jsonResponse });
 			},
 
-			deleteContact: async (id) => {
-				const actions = getActions();
-				await fetch("https://playground.4geeks.com/apis/fake/contact/$(id)", {
-				})
-				await actions.getActions()
-			};
 
 			addContact: async (contactData) => {
 
-				await fetch("https://playground.4geeks.com/apis/fake/contact/$(id)", {
+				await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -39,17 +33,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					})
 
-				})
-
-
-				setStore({
-					contacts: [...store.contacts, addContact.body],
+					setStore({
+						contacts: [...store.contacts, addContact.body],
 				});
 
-			}
+			})
+
+			deleteContact: async (id) => {
+				const actions = getActions();
+				await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
+					method: "DELETE",
+				});
+				await actions.getActions();
+			};
+
+
+			editContact: async (id) => {
+				const actions = getActions();
+				await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
+					method: "EDIT",
+				});
+				await actions.getActions();
+			};
+
 
 		}
+
 	}
-}
+} }
 
 export default getState;
