@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "DELETE",
 				});
 				await actions.getActions();
-			};
+			},
 
 
 			editContact: async (id) => {
@@ -53,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "PUT",
 				});
 				await actions.getActions();
-			};
+			},
 		}
 
 	}
