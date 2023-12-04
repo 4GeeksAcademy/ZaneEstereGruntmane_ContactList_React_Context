@@ -8,7 +8,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context)
 	const navigate = useNavigate()
 	useEffect(() => {
-		actions.getAgenda()
+		actions.getContacts();
 	}, [])
 
 	const handleEditContact = contact => {

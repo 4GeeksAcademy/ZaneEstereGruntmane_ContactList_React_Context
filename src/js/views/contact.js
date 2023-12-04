@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, {  useState, useContext } from "react";
 import { Context } from "../store/appContext";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 
 export const Contact = () => {
 	const { store, actions } = useContext(Context);
@@ -9,6 +9,7 @@ export const Contact = () => {
 
 	const handleSubmitContact = async (el) => {
 		el.preventDefault();
+		 console.log (contactData);
 		await actions.newContact(contactData)
 		navigate("/")
 	}
@@ -38,7 +39,6 @@ export const Contact = () => {
 							className="form-control"
 							id="exampleInputFullName"
 							placeholder="Enter Full Name"
-							value={contactData.fullName}
 							onChange={el => handleInputChange(el)}
 							name="fullName"
 						/>
@@ -53,7 +53,6 @@ export const Contact = () => {
 							className="form-control"
 							id="exampleInputEmail"
 							placeholder="Enter email"
-							value={contactData.email}
 							onChange={el => handleInputChange(el)}
 							name="email"
 						/>
@@ -68,7 +67,6 @@ export const Contact = () => {
 							className="form-control"
 							id="exampleInputPhone"
 							placeholder="Enter phone"
-							value={contactData.phone}
 							onChange={el => handleInputChange(el)}
 							name="phone"
 						/>
@@ -83,7 +81,6 @@ export const Contact = () => {
 							className="form-control"
 							id="exampleInputAddress"
 							placeholder="Enter address"
-							value={contactData.address}
 							onChange={el => handleInputChange(el)}
 							name="address"
 						/>
@@ -92,8 +89,7 @@ export const Contact = () => {
 					<button
 						type="submit"
 						className="mb-3 btn btn-outline-dark border-3 rounded"
-						style={{ width: "40rem" }}
-					>
+						style={{ width: "40rem" }}>
 						Submit
 					</button>
 				</form>

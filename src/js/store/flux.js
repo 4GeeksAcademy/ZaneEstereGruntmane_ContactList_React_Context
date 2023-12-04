@@ -1,62 +1,92 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			url: "https://playground.4geeks.com/apis/fake/contact",
+			urlWithSlug: "https://playground.4geeks.com/apis/fake/contact/agenda/zaneestere",
 			contacts: [
 
 			]
 		},
 
 		actions: {
-			getAgenda: async () => {
+
+			getContacts: async () => {
 				const store = getStore();
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/zaneestere");
+				const response = await fetch(getStore().urlWithSlug);
 				const jsonResponse = await response.json();
 				console.log(jsonResponse)
 				setStore({ contacts: jsonResponse });
 			},
 
-
-			addContact: async (contactData) => {
-				const store = getStore();
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact", {
+			newContact: async (contactData) => {
+				const opt = {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"full_name": contactData.fullName,
-						"email": contactData.email,
+						"full_name": contactData.fullName || "Dave Bradley",
+						"email": contactData.email || "dave@gmail.com",
 						"agenda_slug": "zaneestere",
-						"address": contactData.address,
-						"phone": contactData.phone,
+						"address": contactData.address || "47568 NW 34ST, 33434 FL, USA",
+						"phone": contactData.phone || "7864445566"
 					})
-				});
-
-				const newContact = await response.json();
-				setStore({
-					contacts: [...store.contacts, newContact],
-				});
+				}
+				const response = await fetch(getStore().url, opt)
+				const jasonResponse = await response.json()
+				console.log(jasonResponse)
+				return true
 			},
+
+			setContactToEdit: (contact) => {
+				console.log(contact);
+				setStore({ contactToEdit: contact });
+			},
+
+			editContact: async (newContactData, id) => {
+				const opt = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"full_name": newContactData.fullName,
+						"email": newContactData.email,
+						"agenda_slug": "zaneestere",
+						"address": newContactData.address,
+						"phone": newContactData.phone,
+					})
+				}
+				const response = await fetch(getStore().url + id, opt)
+				const jasonResponse = await response.json()
+				console.log(jasonResponse)
+			},
+
+			getOneContact: async (id) => {
+				const response = await fetch(getStore().url + id);
+				const jsonResponse = await response.json();
+				setStore({ singleContact: jsonResponse });
+			},
+
 
 			deleteContact: async (id) => {
-				const actions = getActions();
-				await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
+				const response = await fetch(getStore().url + id, opt);
+				const opt = {
 					method: "DELETE",
-				});
-				await actions.getActions();
-			},
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify()
+				}
 
-
-			editContact: async (id) => {
-				const actions = getActions();
-				await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
-					method: "PUT",
-				});
-				await actions.getActions();
-			},
+				const jasonResponse = await response.json();
+				console.log(jasonResponse)
+				await getActions().getContacts();
+			}
 		}
 
 	}
-}
+
+};
 
 export default getState;
