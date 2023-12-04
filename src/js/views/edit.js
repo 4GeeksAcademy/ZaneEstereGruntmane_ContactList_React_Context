@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 
 export const Edit = () => {
 
-    const { store, actions } = useContaxt(Contex);
+    const { store, actions } = useContaxt(Context);
     const [contactData, setContactData] = useState({});
     const navigate = useNavigate()
 

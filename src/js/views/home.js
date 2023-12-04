@@ -3,6 +3,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context)
@@ -19,7 +20,7 @@ export const Home = () => {
 
 		<div className="container-fluid text-center">
 			{store.contacts && store.contacts.map(el =>
-				<div className="card-wrapper">
+				<div className="card-wrapper mb-3">
 					<div className="card-body border border-primary-subtle row ms-5 me-5  g-2 g-lg-2">
 						<img
 							src={rigoImage}
@@ -51,9 +52,9 @@ export const Home = () => {
 
 						<div className="contact-change col-2 col-lg-4">
 							<Link to={`/contact/edit/${el.id}`}>
-								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick={el => handleEditContact(el)} ></i>
+								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick={el => actions.handleEditContact(el.id)} ></i>
 							</Link>
-							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={() => actions.handleDeleteContact(el.id)} ></i>
+							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={el => actions.handleDeleteContact(el.id)} ></i>
 						</div>
 
 					</div>

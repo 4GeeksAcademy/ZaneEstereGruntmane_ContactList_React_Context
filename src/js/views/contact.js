@@ -1,4 +1,4 @@
-import React, {  useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router";
 
@@ -9,7 +9,7 @@ export const Contact = () => {
 
 	const handleSubmitContact = async (el) => {
 		el.preventDefault();
-		 console.log (contactData);
+		console.log(contactData);
 		await actions.newContact(contactData)
 		navigate("/")
 	}
@@ -27,7 +27,7 @@ export const Contact = () => {
 		<div className="container">
 
 			<div className="container">
-				<h1>Add a new contact</h1>
+				<h1 className="text-center mb-4">Add a new contact</h1>
 
 				<form className="list-group-item shadow-sm p-3 mb-5 bg-body-tertiary rounded" onSubmit={el => handleSubmitContact(el)}>
 					<div className="mb-3">
@@ -86,14 +86,17 @@ export const Contact = () => {
 						/>
 					</div>
 
+
+
 					<button
 						type="submit"
-						className="mb-3 btn btn-outline-dark border-3 rounded"
-						style={{ width: "40rem" }}>
+						className=" d-grid gap-2 col-6 mx-auto mb-3 btn btn-outline-dark border-3 rounded"
+					>
 						Submit
 					</button>
+
 				</form>
-			</div>
-		</div>
+			</div >
+		</div >
 	)
 };

@@ -25,11 +25,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"full_name": contactData.fullName || "Dave Bradley",
-						"email": contactData.email || "dave@gmail.com",
+						"full_name": contactData.fullName,
+						"email": contactData.email,
 						"agenda_slug": "zaneestere",
-						"address": contactData.address || "47568 NW 34ST, 33434 FL, USA",
-						"phone": contactData.phone || "7864445566"
+						"address": contactData.address,
+						"phone": contactData.phone,
 					})
 				}
 				const response = await fetch(getStore().url, opt)
