@@ -1,17 +1,22 @@
-import React, { useState, useContaxt } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+
 
 export const Edit = () => {
 
-    const { store, actions } = useContaxt(Context);
-    const [contactData, setContactData] = useState({});
+    const { store, actions } = useContext(Context);
+    const [contactData, setContactData] = useState(store.contactToEdit);
     const navigate = useNavigate()
+
+    const params = useParams();
+    console.log(store.contactToEdit);
 
     const handleSubmitContact = async (el) => {
         el.preventDefault();
         console.log(contactData);
-        await actions.newContact(contactData)
+
+        await actions.editContact(contactData, params.id)
         navigate("/")
     }
 
@@ -23,7 +28,7 @@ export const Edit = () => {
     return (
         <div className="container">
 
-            <div className="container" key={index}>
+            <div className="container">
                 <h1>Add a new contact</h1>
 
                 <form className="list-group-item shadow-sm p-3 mb-5 bg-body-tertiary rounded" onSubmit={el => handleSubmitContact(el)}>
@@ -36,9 +41,9 @@ export const Edit = () => {
                             className="form-control"
                             id="exampleInputFullName"
                             placeholder="Enter Full Name"
-                            value={contactData.fullName}
-                            onChange={el => handleInputChange(el)}
-                            name="fullName"
+                            value={contactData.full_name}
+                            onChange={event => handleInputChange(event)}
+                            name="full_name"
                         />
                     </div>
 
@@ -52,7 +57,7 @@ export const Edit = () => {
                             id="exampleInputEmail"
                             placeholder="Enter email"
                             value={contactData.email}
-                            onChange={el => handleInputChange(el)}
+                            onChange={event => handleInputChange(event)}
                             name="email"
                         />
                     </div>
@@ -67,7 +72,7 @@ export const Edit = () => {
                             id="exampleInputPhone"
                             placeholder="Enter phone"
                             value={contactData.phone}
-                            onChange={el => handleInputChange(el)}
+                            onChange={event => handleInputChange(event)}
                             name="phone"
                         />
                     </div>
@@ -82,16 +87,16 @@ export const Edit = () => {
                             id="exampleInputAddress"
                             placeholder="Enter address"
                             value={contactData.address}
-                            onChange={el => handleInputChange(el)}
+                            onChange={event => handleInputChange(event)}
                             name="address"
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="mb-3 btn btn-outline-dark border-3 rounded"
-                        style={{ width: "40rem" }}
+                        className=" d-grid gap-2 col-6 mx-auto mb-3 btn btn-outline-dark border-3 rounded"
                     >
+
                         Submit
                     </button>
                 </form>

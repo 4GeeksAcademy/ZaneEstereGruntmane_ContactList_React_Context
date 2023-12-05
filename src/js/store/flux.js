@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			url: "https://playground.4geeks.com/apis/fake/contact",
+			url: "https://playground.4geeks.com/apis/fake/contact/",
 			urlWithSlug: "https://playground.4geeks.com/apis/fake/contact/agenda/zaneestere",
 			contacts: [
 
@@ -44,13 +44,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			editContact: async (newContactData, id) => {
+				console.log(newContactData)
 				const opt = {
 					method: "PUT",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"full_name": newContactData.fullName,
+						"full_name": newContactData.full_name,
 						"email": newContactData.email,
 						"agenda_slug": "zaneestere",
 						"address": newContactData.address,

@@ -24,8 +24,8 @@ export const Home = () => {
 	return (
 
 		<div className="container-fluid text-center">
-			{store.contacts && store.contacts.map(el =>
-				<div className="card-wrapper mb-3">
+			{store.contacts && store.contacts.map((el, index) =>
+				<div className="card-wrapper mb-3" key = {index}>
 					<div className="card-body border border-primary-subtle rounded row ms-5 me-5  g-2 g-lg-2">
 						<img
 							src={rigoImage}
@@ -57,9 +57,9 @@ export const Home = () => {
 
 						<div className="contact-change col-2 col-lg-4">
 							<Link to={`/contact/edit/${el.id}`}>
-								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick={el => handleEditContact(el.id)} ></i>
+								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick= {() => handleEditContact(el)} ></i>
 							</Link>
-							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={el => handleDeleteContact(el)} ></i>
+							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick= {() => handleDeleteContact(el)} ></i>
 
 						</div>
 
