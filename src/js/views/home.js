@@ -16,6 +16,11 @@ export const Home = () => {
 		actions.setContactToEdit(contact)
 		navigate("/edit/" + contact.id)
 	}
+
+	const handleDeleteContact = contact => {
+		actions.deleteContact(contact.id);
+	}
+
 	return (
 
 		<div className="container-fluid text-center">
@@ -52,9 +57,10 @@ export const Home = () => {
 
 						<div className="contact-change col-2 col-lg-4">
 							<Link to={`/contact/edit/${el.id}`}>
-								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick={el => actions.handleEditContact(el.id)} ></i>
+								<i className="contact-to-edit fa-regular fa-pen-to-square" style={{ color: "#c5d7f6" }} onClick={el => handleEditContact(el.id)} ></i>
 							</Link>
-							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={el => actions.handleDeleteContact(el.id)} ></i>
+							<i className="contact-to-delete fa-regular fa-trash-can" style={{ color: "#c5d7f6" }} onClick={el => handleDeleteContact(el)} ></i>
+
 						</div>
 
 					</div>

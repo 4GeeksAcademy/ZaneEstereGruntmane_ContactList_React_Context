@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContaxt } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useContaxt } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Edit = () => {

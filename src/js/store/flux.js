@@ -25,11 +25,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"full_name": contactData.fullName,
-						"email": contactData.email,
+						"full_name": contactData.fullName || "Dave Bradley",
+						"email": contactData.email || "dave@gmail.com",
 						"agenda_slug": "zaneestere",
-						"address": contactData.address,
-						"phone": contactData.phone,
+						"address": contactData.address || "47568 NW 34ST, 33434 FL, USA",
+						"phone": contactData.phone || "7864445566",
 					})
 				}
 				const response = await fetch(getStore().url, opt)
@@ -70,19 +70,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			deleteContact: async (id) => {
-				const response = await fetch(getStore().url + id, opt);
 				const opt = {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify()
-				}
+				};
 
-				const jasonResponse = await response.json();
-				console.log(jasonResponse)
+				const response = await fetch(getStore().url + id, opt);
+				const jsonResponse = await response.json();
+				console.log(jsonResponse);
 				await getActions().getContacts();
 			}
+
 		}
 
 	}
